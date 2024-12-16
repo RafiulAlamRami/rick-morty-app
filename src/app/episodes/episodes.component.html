@@ -1,20 +1,27 @@
-<div *ngIf="isLoading" class="loading">Loading episodes...</div>
-<app-filters
-  >
-</app-filters>
-
-<div *ngIf="!isLoading && episodes.length > 0">
-    <div *ngFor="let episode of episodes" class="episode-card">
-        <h2>{{ episode.name }}</h2>
-        <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
-        <p><strong>Episode Code:</strong> {{ episode.episode }}</p>
-    </div>
-
-
-    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
-        (pageChange)="changePage($event)"></app-pagination>
+<div *ngIf="isLoading" class="flex justify-center items-center py-8 text-xl text-gray-500">
+    Loading episodes...
 </div>
 
-<div *ngIf="!isLoading && episodes.length === 0">
-    <p>No episodes found.</p>
+<app-filters (search)="onSearchChange($event)" class="mb-8 flex justify-center"></app-filters>
+
+
+<div *ngIf="!isLoading && episodes.length > 0"
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-4 py-8">
+    <div *ngFor="let episode of episodes"
+        class="episode-card bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-all">
+        <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ episode.name }}</h2>
+        <p class="text-gray-600"><strong>Air Date:</strong> {{ episode.air_date }}</p>
+        <p class="text-gray-600"><strong>Episode Code:</strong> {{ episode.episode }}</p>
+    </div>
+</div>
+
+
+<div *ngIf="!isLoading && episodes.length > 0" class="mt-8 flex justify-center">
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="changePage($event)"
+        class="flex items-center space-x-4"></app-pagination>
+</div>
+
+
+<div *ngIf="!isLoading && episodes.length === 0" class="flex justify-center items-center py-8 text-lg text-gray-500">
+    No episodes found.
 </div>
