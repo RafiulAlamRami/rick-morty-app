@@ -14,6 +14,8 @@ export class EpisodesComponent implements OnInit{
   currentPage = 1;
   totalPages = 0;
   isLoading = false; 
+  searchItem: string = ''; 
+  bySearch: string = '';
 
   constructor(private rickAndMortyService: RickAndMortyService) {}
 
@@ -22,9 +24,14 @@ export class EpisodesComponent implements OnInit{
   }
 
   
+
+  
   fetchEpisodes() {
     this.isLoading = true;
-    this.rickAndMortyService.getEpisodes(this.currentPage).subscribe(
+    if (this.searchItem && this.searchItem.length > 0) {
+      this.bySearch = this.searchItem; 
+    }
+    this.rickAndMortyService.getEpisodes(this.bySearch,this.currentPage).subscribe(
       (responseData: any) => {
         console.log(responseData); 
         
@@ -43,6 +50,12 @@ export class EpisodesComponent implements OnInit{
   changePage(page: number) {
     this.currentPage = page;
     this.fetchEpisodes();
+  }
+
+  onSearchChange(searchValue: string) {
+    this.searchItem = searchValue;
+    console.log(searchValue);
+    this.fetchEpisodes(); 
   }
 
   

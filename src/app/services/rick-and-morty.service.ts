@@ -28,7 +28,11 @@ export class RickAndMortyService {
     
   }
 
-  getEpisodes(page: number) {
+  getEpisodes(bySearch:string,page: number) {
+    if (typeof page==='number' && bySearch.length>0) {
+      
+      return this.http.get(`${this.baseUrl}/episode?name=${bySearch}`);
+    }
     return this.http.get(`${this.baseUrl}/episode?page=${page}`);
   }
 }

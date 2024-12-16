@@ -1,4 +1,7 @@
 <div *ngIf="isLoading" class="loading">Loading episodes...</div>
+<app-filters
+  >
+</app-filters>
 
 <div *ngIf="!isLoading && episodes.length > 0">
     <div *ngFor="let episode of episodes" class="episode-card">
