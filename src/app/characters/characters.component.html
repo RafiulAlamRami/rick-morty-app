@@ -1,15 +1,21 @@
+<div *ngIf="isLoading" class="loading">
+    Loading characters...
+</div>
 
-<div *ngFor="let character of characters" class="character-card">
-    <img [src]="character.image" alt="{{ character.name }}" />
-    <h3>{{ character.name }}</h3>
-    <p>Status: {{ character.status }}</p>
-    <p>Species: {{ character.species }}</p>
-    <p>Origin: {{ character.origin.name }}</p>
-  </div>
-  
-  <app-pagination
-    [currentPage]="currentPage"
-    [totalPages]="totalPages"
-    (pageChange)="changePage($event)"
-  ></app-pagination>
-  
+
+<div *ngIf="!isLoading && characters.length > 0">
+    <div *ngFor="let character of characters" class="character-card">
+        <img [src]="character.image" alt="{{ character.name }}" />
+        <h3>{{ character.name }}</h3>
+        <p>Status: {{ character.status }}</p>
+        <p>Species: {{ character.species }}</p>
+        <p>Origin: {{ character.origin.name }}</p>
+    </div>
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChange)="changePage($event)"></app-pagination>
+</div>
+
+
+<div *ngIf="!isLoading && characters.length === 0">
+    <p>No characters found.</p>
+</div>

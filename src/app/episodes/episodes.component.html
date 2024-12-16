@@ -1,1 +1,17 @@
-<p>episodes works!</p>
+<div *ngIf="isLoading" class="loading">Loading episodes...</div>
+
+<div *ngIf="!isLoading && episodes.length > 0">
+    <div *ngFor="let episode of episodes" class="episode-card">
+        <h2>{{ episode.name }}</h2>
+        <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
+        <p><strong>Episode Code:</strong> {{ episode.episode }}</p>
+    </div>
+
+
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+        (pageChange)="changePage($event)"></app-pagination>
+</div>
+
+<div *ngIf="!isLoading && episodes.length === 0">
+    <p>No episodes found.</p>
+</div>

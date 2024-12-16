@@ -13,7 +13,7 @@ export class CharactersComponent implements OnInit {
   characters: Character_Model[] = [];
   currentPage = 1;
   totalPages = 0;
-
+  isLoading = false;
   constructor(private rickAndMortyService: RickAndMortyService) {}
 
   ngOnInit(): void {
@@ -21,11 +21,17 @@ export class CharactersComponent implements OnInit {
   }
 
   fetchCharacters() {
+    this.isLoading = true;
     this.rickAndMortyService.getCharacters(this.currentPage).subscribe((responseData: any) => {
       console.log(responseData);
       
       this.characters = responseData.results;
       this.totalPages = responseData.info.pages;
+      this.isLoading = false;
+    },
+    (error) => {
+      console.error('Error fetching episodes', error);
+      this.isLoading = false;
     });
   }
 
