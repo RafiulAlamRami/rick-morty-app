@@ -10,8 +10,22 @@ export class RickAndMortyService {
 
   constructor(private http: HttpClient) {}
 
-  getCharacters(page: number) {
-    return this.http.get(`${this.baseUrl}/character?page=${page}`);
+
+
+  getCharacters(bysearch:string,byStatus:string,page: number) {
+    if (typeof page==='number' && bysearch.length===0 && byStatus.length>0) {
+      
+      return this.http.get(`${this.baseUrl}/character?status=${byStatus}`);
+    }
+    else{
+      if (typeof page==='number' && bysearch.length>0 && byStatus.length===0) {
+        return this.http.get(`${this.baseUrl}/character?name=${bysearch}`);
+      }
+      else{
+        return this.http.get(`${this.baseUrl}/character?page=${page}`);
+      }
+    }
+    
   }
 
   getEpisodes(page: number) {

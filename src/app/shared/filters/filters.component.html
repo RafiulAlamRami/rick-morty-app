@@ -1,0 +1,43 @@
+<!-- <input 
+    type="text" 
+    placeholder="Search by name" 
+    [(ngModel)]="searchTerm" 
+    (ngModelChange)="onSearch(searchTerm)" 
+/>
+<select [(ngModel)]="selectedStatus" (ngModelChange)="onStatusChange(selectedStatus)">
+    <option value="">All</option>
+    <option value="alive">Alive</option>
+    <option value="dead">Dead</option>
+    <option value="unknown">Unknown</option>
+</select> -->
+
+<div>
+    <form (ngSubmit)="onSearch(userForm)" #userForm="ngForm">
+        <input 
+        type="text"
+        id="firstName"
+            name="searchItem"
+            ngModel
+            placeholder="Search by name"
+            required
+        >
+        <button btn type="submit" [disabled]="!userForm.valid" class="border-2 border-solid border-red-500">
+            Submit
+        </button>
+    </form>
+</div>
+
+<div class="form-group">
+    <form (ngSubmit)="onStatusChange(useForm)" #useForm="ngForm">
+        <select id="status" name="status" ngModel>
+            <option value="" disabled selected>All</option>
+            <option value="alive">Alive</option>
+            <option value="dead">Dead</option>
+            <option value="unknown">Unknown</option>
+        </select>
+        <button class="border-2 border-solid border-red-500" type="submit" [disabled]="!useForm.valid">
+            Submit
+        </button>
+    </form>
+
+</div>

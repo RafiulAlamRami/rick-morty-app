@@ -26,7 +26,7 @@ export class EpisodesComponent implements OnInit{
     this.isLoading = true;
     this.rickAndMortyService.getEpisodes(this.currentPage).subscribe(
       (responseData: any) => {
-        console.log(responseData);
+        console.log(responseData); 
         
         this.episodes = responseData.results;
         this.totalPages = responseData.info.pages;

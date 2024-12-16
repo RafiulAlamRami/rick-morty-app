@@ -11,6 +11,8 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
 import { FiltersComponent } from './shared/filters/filters.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     MatSlideToggleModule,
     HttpClientModule,
+    FormsModule,
     
   ],
   providers: [

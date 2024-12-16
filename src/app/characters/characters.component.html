@@ -2,6 +2,11 @@
     Loading characters...
 </div>
 
+<app-filters
+  (search)="onSearchChange($event)"
+  (statusChange)="onStatusChange($event)">
+</app-filters>
+
 
 <div *ngIf="!isLoading && characters.length > 0">
     <div *ngFor="let character of characters" class="character-card">
