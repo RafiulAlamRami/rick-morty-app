@@ -10,6 +10,7 @@ import { EpisodesComponent } from './episodes/episodes.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
 import { FiltersComponent } from './shared/filters/filters.component';
 import { HeaderComponent } from './header/header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { HeaderComponent } from './header/header.component';
     BrowserModule,
     AppRoutingModule,
     MatSlideToggleModule,
+    HttpClientModule,
+    
   ],
   providers: [
     provideAnimationsAsync()
