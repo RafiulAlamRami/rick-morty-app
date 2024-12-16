@@ -12,6 +12,7 @@ import { FiltersComponent } from './shared/filters/filters.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatSlideToggleModule,
     HttpClientModule,
     FormsModule,
+    MatProgressBarModule,
     
   ],
   providers: [
